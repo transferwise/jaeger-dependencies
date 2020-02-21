@@ -48,5 +48,7 @@ spec:
 
 `ES_PASSWORD` - ES password
 
+`ES_BULK_SIZE` - No of items to be read in a scroll request
+
 ## How it works
 Jaeger-dependencies aggregates traces for previous day in directed graph. It queries ES span index for spans who have `span.kind` equal to `server` and have references. After that it counts number of inter-service communications.
