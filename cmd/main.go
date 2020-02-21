@@ -16,7 +16,6 @@ import (
 
 const jaegerSpanPrefix string = "jaeger-span-"
 const jaegerDepPrefix string = "jaeger-dependencies-"
-const bulkReadSize = 500
 
 type Process struct {
 	ServiceName string `json:"serviceName"`
@@ -51,6 +50,7 @@ func GenIndexNameWithPrefix(prefix string) string {
 func main() {
 	esUsername := os.Getenv("ES_USERNAME")
 	esPassword := os.Getenv("ES_PASSWORD")
+	bulkReadSize := os.Getenv("ES_BULK_SIZE")
 	client, err := elastic.NewSimpleClient(
 		elastic.SetURL(os.Getenv("ES_HOST")),
 		elastic.SetBasicAuth(esUsername, esPassword))
