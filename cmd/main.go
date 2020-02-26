@@ -90,7 +90,7 @@ func main() {
 	searchService := client.Scroll(GenIndexNameWithPrefix(esIndexPrefix + jaegerSpanPrefix)).
 		Type("span").
 		Query(fullQuery).
-		Scroll("10m").
+		Scroll("1m").
 		Size(bulkReadSize).
 		IgnoreUnavailable(true)
 
