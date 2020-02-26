@@ -16,7 +16,7 @@ import (
 
 const jaegerSpanPrefix string = "jaeger-span-"
 const jaegerDepPrefix string = "jaeger-dependencies-"
-const bulkReadSize = 5000
+const bulkReadSize = 10000
 
 type Process struct {
 	ServiceName string `json:"serviceName"`
@@ -90,7 +90,7 @@ func main() {
 	searchService := client.Scroll(GenIndexNameWithPrefix(esIndexPrefix + jaegerSpanPrefix)).
 		Type("span").
 		Query(fullQuery).
-		Scroll("2m").
+		Scroll("10m").
 		Size(bulkReadSize).
 		IgnoreUnavailable(true)
 
